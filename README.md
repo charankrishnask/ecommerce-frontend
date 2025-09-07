@@ -1,70 +1,109 @@
-# Getting Started with Create React App
+# E-Commerce Web Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A full-stack single-page e-commerce application built as a part of an internship assignment. The project features a complete backend API with JWT authentication and a modern, responsive React frontend.
 
-## Available Scripts
+---
+## 🌐 Live Demo
 
-In the project directory, you can run:
+* **Frontend (Vercel):https://ecommerce-liart-mu.vercel.app/
+* **Backend (Render):https://ecommerce-backend-49mb.onrender.com/api
 
-### `npm start`
+---
+## ✨ Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Authentication:** Secure user signup and login using JSON Web Tokens (JWT).
+- **Product Management:** Full CRUD (Create, Read, Update, Delete) functionality for products.
+- **Dynamic Filtering:** Filter products by category and price on the main listing page.
+- **Shopping Cart:** Add, remove, and update the quantity of items in the cart.
+- **Persistence:** Cart items are saved to the user's account and persist across login sessions.
+- **Responsive Design:** A modern and clean UI that works on all devices.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
+## 🛠️ Tech Stack
 
-### `npm test`
+- **Frontend:** React, React Router, Axios, CSS
+- **Backend:** Node.js, Express
+- **Database:** MongoDB (with Mongoose)
+- **Authentication:** JSON Web Token (JWT), bcryptjs
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
+## 🚀 Getting Started
 
-### `npm run build`
+To get a local copy up and running, follow these simple steps.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### **Prerequisites**
+- Node.js (v18 or later)
+- npm
+- A MongoDB Atlas account or a local MongoDB installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### **Backend Setup**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1.  **Clone the repository:**
+    ```sh
+    git clone [https://github.com/charankrishnask/ecommerce-backend.git](https://github.com/charankrishnask/ecommerce-backend.git)
+    cd ecommerce-backend
+    ```
 
-### `npm run eject`
+2.  **Install NPM packages:**
+    ```sh
+    npm install
+    ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3.  **Create a `.env` file** in the root of the backend folder and add your environment variables:
+    ```env
+    MONGO_URI=your_mongodb_connection_string
+    JWT_SECRET=your_super_secret_key
+    ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4.  **Run the server:**
+    ```sh
+    node index.js
+    ```
+    The backend will be running on `http://localhost:5000`.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### **Frontend Setup**
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1.  **Clone the repository:**
+    ```sh
+    git clone [https://github.com/charankrishnask/ecommerce-frontend.git](https://github.com/charankrishnask/ecommerce-frontend.git)
+    cd ecommerce-frontend
+    ```
 
-## Learn More
+2.  **Install NPM packages:**
+    ```sh
+    npm install
+    ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3.  **Create a `.env` file** in the root of the frontend folder and add the backend API URL:
+    ```env
+    REACT_APP_API_URL=http://localhost:5000/api
+    ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+4.  **Run the client:**
+    ```sh
+    npm start
+    ```
+    The frontend will open on `http://localhost:3000`.
 
-### Code Splitting
+---
+## 📄 API Endpoints
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<details>
+<summary>Click to view API Endpoints</summary>
 
-### Analyzing the Bundle Size
+#### Authentication
+- `POST /api/auth/signup` - Register a new user
+- `POST /api/auth/login` - Log in a user and get a token
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+#### Products
+- `GET /api/items` - Get all items (with optional filters: `?category=...` `&price[lte]=...`)
+- `POST /api/items` - Create a new item (protected)
+- `POST /api/items/bulk` - Create multiple items at once (protected)
 
-### Making a Progressive Web App
+#### Cart
+- `GET /api/cart` - Get the logged-in user's cart (protected)
+- `POST /api/cart` - Add an item to the cart (protected)
+- `DELETE /api/cart/:itemId` - Remove an item from the cart (protected)
+- `PUT /api/cart/:itemId` - Update an item's quantity in the cart (protected)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+</details>
